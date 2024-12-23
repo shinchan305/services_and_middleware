@@ -1,6 +1,7 @@
 ## Use Hosted Images
 - Download the `docker-compose.yml` file within Accounts.API.
 - Run the command `docker-compose up`
+- Since RabbitMQ takes a bit of time to run, `pdfservice`, `notificationservice1` and `notificationservice2` will fail and exit. Please run these 3 containers again once rabbitmq is up.
 
 ## Run the project locally
 - Clone this github repo.
