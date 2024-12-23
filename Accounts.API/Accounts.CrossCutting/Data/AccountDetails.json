@@ -1,0 +1,38 @@
+[
+  {
+    "AccountNumber": "1234567890",
+    "AccountType": "Savings",
+    "Balance": 1000.00,
+    "AccountHolder": "John Doe"
+  },
+  {
+    "AccountNumber": "0987654321",
+    "AccountType": "Current",
+    "Balance": 500.00,
+    "AccountHolder": "Jane Doe"
+  },
+  {
+    "AccountNumber": "1357924680",
+    "AccountType": "Savings",
+    "Balance": 1500.00,
+    "AccountHolder": "John Smith"
+  },
+  {
+    "AccountNumber": "2468013579",
+    "AccountType": "Current",
+    "Balance": 2000.00,
+    "AccountHolder": "Jane Smith"
+  },
+  {
+    "AccountNumber": "9876543210",
+    "AccountType": "Savings",
+    "Balance": 2500.00,
+    "AccountHolder": "Jasmine Doe"
+  },
+  {
+    "AccountNumber": "2345678901",
+    "AccountType": "Current",
+    "Balance": 3000.00,
+    "AccountHolder": "Jack Doe"
+  }
+]

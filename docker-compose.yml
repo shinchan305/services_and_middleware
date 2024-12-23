@@ -1,0 +1,91 @@
+services:
+  my-rabbit:
+    image: rabbitmq:3-management
+    container_name: my-rabbit
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "user"
+      RABBITMQ_DEFAULT_PASS: "password"
+    networks:
+      - appnetwork
+    
+  notificationservice1:
+    image: notificationservice1:latest
+    stdin_open: true
+    tty: true
+    container_name: notificationservice1
+    build:
+      context: ./NotificationService
+      dockerfile: ./NotificationService1/Dockerfile
+    ports:
+      - "5003:80"
+    depends_on:
+      - my-rabbit
+    networks:
+      - appnetwork
+  
+  notificationservice2:
+    image: notificationservice2:latest
+    stdin_open: true
+    tty: true
+    container_name: notificationservice2
+    build:
+      context: ./NotificationService
+      dockerfile: ./NotificationService2/Dockerfile
+    ports:
+      - "5004:80"
+    depends_on:
+      - my-rabbit
+    networks:
+      - appnetwork
+  
+  pdfservice:
+    image: pdfservice:latest
+    stdin_open: true
+    tty: true
+    container_name: pdfservice
+    build:
+      context: ./PDFService
+      dockerfile: Dockerfile
+    ports:
+      - "5005:80"
+    depends_on:
+      - my-rabbit
+    networks:
+      - appnetwork
+      
+  grpcserver:
+    image: grpcserver:latest
+    container_name: grpcserver
+    build:
+      context: ./Accounts.API
+      dockerfile: ./Account.Services.gRPC/Dockerfile
+    ports:
+      - "5001:5001"
+    depends_on:
+      - notificationservice1
+      - notificationservice2
+      - pdfservice
+    networks:
+      - appnetwork
+
+  accountapi:
+    image: accountapi:latest
+    container_name: accountapi
+    build:
+      context: ./Accounts.API
+      dockerfile: ./Accounts.API/Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    depends_on:
+      - grpcserver
+    networks:
+      - appnetwork
+
+networks:
+  appnetwork:
+    driver: bridge

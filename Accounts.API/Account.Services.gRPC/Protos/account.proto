@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "Account.Services.gRPC";
+
+import "google/protobuf/timestamp.proto";
+
+package account;
+
+service Account {
+  // Sends account statement
+  rpc GetAccountStatement (AccountStamenetRequest) returns (AccountStatementReply);
+}
+
+message AccountStamenetRequest {
+    bool publishEventToRabbitMQ = 1;
+}
+
+message AccountStatementReply {
+    repeated AccountStatementDto AccountStatement = 1;
+}
+
+// The response message containing account statement details.
+message AccountStatementDto
+    {
+        string FromAccountNumber = 1;
+        string ToAccountNumber = 2;
+        string TransactionType = 3;
+        double Amount = 4;
+        google.protobuf.Timestamp TransactionDateTime = 5;
+    }
