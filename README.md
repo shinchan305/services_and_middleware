@@ -1,3 +1,7 @@
+## Use Hosted Images
+- Download the `docker-compose.yml` file within Accounts.API.
+- Run the command `docker-compose up`
+
 ## Run the project locally
 - Clone this github repo.
 - Open the directory in your local command prompt window
