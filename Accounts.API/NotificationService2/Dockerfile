@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 COPY ["/NotificationService2/NotificationService2.csproj", "NotificationService2/"]
-COPY ["/Notification.CrossCutting/Notification.CrossCutting.csproj", "Notification.CrossCutting/"]
+COPY ["/Accounts.CrossCutting/Accounts.CrossCutting.csproj", "Accounts.CrossCutting/"]
 
 RUN dotnet restore "NotificationService2/NotificationService2.csproj"
 

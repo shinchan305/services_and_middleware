@@ -9,13 +9,16 @@
 
 	<ItemGroup>
 		<PackageReference Include="Google.Protobuf" Version="3.29.2" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
 		<PackageReference Include="Grpc.Tools" Version="2.68.1">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Accounts.CrossCutting\Accounts.CrossCutting.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

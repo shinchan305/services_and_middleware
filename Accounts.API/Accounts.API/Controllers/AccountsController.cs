@@ -47,8 +47,7 @@ namespace Accounts.API.Controllers
         [HttpPost(Name = "CreateAccount")]
         public async Task<IActionResult> Post(AccountDetailsDto accountDetails)
         {
-            await _accountService.CreateAccount(accountDetails);
-            return Ok();
+            return Ok(await _accountService.CreateAccount(accountDetails));
         }
     }
 }

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Notification.CrossCutting\Notification.CrossCutting.csproj" />
+    <ProjectReference Include="..\Accounts.CrossCutting\Accounts.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

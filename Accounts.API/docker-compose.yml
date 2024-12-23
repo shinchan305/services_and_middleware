@@ -12,55 +12,55 @@ services:
       - appnetwork
     
   notificationservice1:
-    image: notificationservice1:latest
+    image: surajkishor/notificationservice1:latest
     stdin_open: true
     tty: true
     container_name: notificationservice1
     build:
-      context: ./NotificationService
+      context: ./
       dockerfile: ./NotificationService1/Dockerfile
     ports:
       - "5003:80"
-    depends_on:
-      - my-rabbit
+    # depends_on:
+      # - my-rabbit
     networks:
       - appnetwork
   
   notificationservice2:
-    image: notificationservice2:latest
+    image: surajkishor/notificationservice2:latest
     stdin_open: true
     tty: true
     container_name: notificationservice2
     build:
-      context: ./NotificationService
+      context: ./
       dockerfile: ./NotificationService2/Dockerfile
     ports:
       - "5004:80"
-    depends_on:
-      - my-rabbit
+    # depends_on:
+      # - my-rabbit
     networks:
       - appnetwork
   
   pdfservice:
-    image: pdfservice:latest
+    image: surajkishor/pdfservice:latest
     stdin_open: true
     tty: true
     container_name: pdfservice
     build:
-      context: ./PDFService
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: ./PDFService/Dockerfile
     ports:
       - "5005:80"
-    depends_on:
-      - my-rabbit
+    # depends_on:
+      # - my-rabbit
     networks:
       - appnetwork
       
   grpcserver:
-    image: grpcserver:latest
+    image: surajkishor/grpcserver:latest
     container_name: grpcserver
     build:
-      context: ./Accounts.API
+      context: ./
       dockerfile: ./Account.Services.gRPC/Dockerfile
     ports:
       - "5001:5001"
@@ -72,10 +72,10 @@ services:
       - appnetwork
 
   accountapi:
-    image: accountapi:latest
+    image: surajkishor/accountapi:latest
     container_name: accountapi
     build:
-      context: ./Accounts.API
+      context: ./
       dockerfile: ./Accounts.API/Dockerfile
     ports:
       - "5002:80"

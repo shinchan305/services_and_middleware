@@ -7,7 +7,7 @@ namespace Accounts.Services
 {
     public class AccountsService : IAccountService
     {
-        public async Task CreateAccount(AccountDetailsDto accountDetails)
+        public async Task<AccountDetailsDto> CreateAccount(AccountDetailsDto accountDetails)
         {
             if (accountDetails.IsValid())
             {
@@ -25,6 +25,8 @@ namespace Accounts.Services
             {
                 throw new ArgumentNullException("Please provide Account Holder name.");
             }
+
+            return accountDetails;
         }
 
         public List<AccountDetailsDto> GetAccountDetails()

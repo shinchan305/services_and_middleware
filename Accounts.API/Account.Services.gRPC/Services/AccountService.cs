@@ -1,5 +1,6 @@
 ﻿using Accounts.CrossCutting;
 using Grpc.Core;
+using Newtonsoft.Json;
 using System.Transactions;
 
 namespace Account.Services.gRPC.Services
@@ -8,6 +9,7 @@ namespace Account.Services.gRPC.Services
     {
         public async override Task<AccountStatementReply> GetAccountStatement(AccountStamenetRequest request, ServerCallContext context)
         {
+            Console.WriteLine($"incoming request: {JsonConvert.SerializeObject(request)}");
             var statementDetails = Utility.ReadDataFromFile<List<AccountStatementDto>>(Constants.ACCOUNT_STATEMENT_FILE_NAME);
             if (request.PublishEventToRabbitMQ)
             {
@@ -20,6 +22,8 @@ namespace Account.Services.gRPC.Services
 
             AccountStatementReply reply = new AccountStatementReply();
             reply.AccountStatement.AddRange(statementDetails);
+
+            Console.WriteLine($"Outgoing response: {JsonConvert.SerializeObject(reply)}");
 
             return reply;
         }

@@ -39,17 +39,22 @@ namespace Accounts.CrossCutting
 
         public static async Task PublishEventToRabbitMQ(string message, string exchangeName, string routingKey, string exchangeType = ExchangeType.Topic)
         {
-            var factory = new ConnectionFactory
-            {
-                HostName = "my-rabbit",
-                UserName = "user",
-                Password = "password"
-            };
+            var factory = GetRabbitMQConnectionFactory();
             using var connection = await factory.CreateConnectionAsync();
             using var channel = await connection.CreateChannelAsync();
             await channel.ExchangeDeclareAsync(exchangeName, exchangeType);
 
             await channel.BasicPublishAsync(exchangeName, routingKey, Encoding.UTF8.GetBytes(message));
+        }
+
+        public static ConnectionFactory GetRabbitMQConnectionFactory()
+        {
+            return new ConnectionFactory
+            {
+                HostName = "my-rabbit",
+                UserName = "user",
+                Password = "password"
+            };
         }
     }
 }

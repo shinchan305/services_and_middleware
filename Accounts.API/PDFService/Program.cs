@@ -1,22 +1,18 @@
-﻿using Grpc.Net.Client;
+﻿using Accounts.CrossCutting;
+using Grpc.Net.Client;
 using Newtonsoft.Json;
 using PDFService;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
-using Constants = PDFService.Constants;
+using Constants = Accounts.CrossCutting.Constants;
 
-class Consumer
+class Program
 {
     static async Task Main(string[] args)
     {
         // Create a connection to the RabbitMQ server
-        var factory = new ConnectionFactory
-        {
-            HostName = "my-rabbit",
-            UserName = "user",
-            Password = "password"
-        };
+        var factory = Utility.GetRabbitMQConnectionFactory();
         using var connection = await factory.CreateConnectionAsync();
         using var channel = await connection.CreateChannelAsync();
 
