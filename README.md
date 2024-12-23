@@ -1,4 +1,7 @@
 # Running The Poject
+
+We can set up the project in 2 ways:
+
 ## Using Hosted Images
 - Download the `docker-compose.yml` file within Accounts.API.
 - Run the command `docker-compose up`
