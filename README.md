@@ -1,6 +1,9 @@
 # Assumptions
 - System should use default names for RabbitMQ queues.
 
+# Screenshots
+- Please refer to the `Screenshots_Of_Running_System.docx` file for the screenshots as asked for in the assignment.
+
 # Running The Poject
 
 We can set up the project in 2 ways:
