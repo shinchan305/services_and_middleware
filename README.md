@@ -1,3 +1,6 @@
+# Assumptions
+- System should use default names for RabbitMQ queues.
+
 # Running The Poject
 
 We can set up the project in 2 ways:
